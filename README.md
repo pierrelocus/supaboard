@@ -37,3 +37,7 @@ php artisan websockets:serve
 + create other widgets
 + enhance text/number widget with text to display what they are
 + find different color palettes and randomize the colors of widgets
+
+## Screenshot
+
+![alt text](https://github.com/pierrelocus/supaboard/supaboard.png "Screenshot")
