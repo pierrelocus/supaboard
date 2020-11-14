@@ -1,0 +1,72 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+
+.bg-black{
+    background: url('/img/bg.jpg');
+}
+.grid-stack-item-content{
+    color: white;
+    &.text{
+        background:#7400B8;
+        display: flex;
+    }
+    &.text h1{
+        margin: auto;
+    }
+    &.gauge{
+        background:#6930C3;
+        width: auto;
+        height: auto;
+    }
+    &.graph{
+        background: #64DFDF;
+    }
+    &.number{
+        background: #0077B6;
+        display: flex;
+    }
+    &.number h1{
+        font-size: 5em;
+        margin: auto;
+    }
+    &.food .food-container{
+        padding-bottom: 10px;
+        width: 100%;
+        height: 100%;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    & .title-text {
+        font-size: 16px;
+        font-weight: 600;
+    }
+    & .gauge.gauge_item{
+        width: 70%;
+        height: 70%;
+        margin-top: 0;
+        padding-top: 0;
+    }
+    & .chart_item{
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+}
+.grid-item-content{
+    overflow: hidden!important;
+}
+.widget_id_bottom{
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 12px;
+}
