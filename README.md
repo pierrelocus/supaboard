@@ -35,6 +35,8 @@ php artisan websockets:serve
 The goal is to only use api calls to manage the widgets.
 Info about widgets can be found in /admin (table dumping the db)
 Use POST requests to /api/widgets/{widget_id} with data like
+If widget_id doesn't exist, it will create a new widget.
+
 ```
 {
     x: int,
@@ -43,7 +45,6 @@ Use POST requests to /api/widgets/{widget_id} with data like
     height: int,
     type: string (text|number|gauge|graph|food),
     auto_position: bool (use false if you give a x/y position, will force later),
-    widget_id: string,
     text: string,
     data: object
 }
