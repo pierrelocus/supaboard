@@ -40,4 +40,4 @@ php artisan websockets:serve
 
 ## Screenshot
 
-![alt text](https://github.com/pierrelocus/supaboard/supaboard.png "Screenshot")
+![alt text](https://raw.githubusercontent.com/pierrelocus/supaboard/main/supaboard.png "Screenshot")
