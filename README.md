@@ -35,6 +35,7 @@ php artisan websockets:serve
 The goal is to only use api calls to manage the widgets.
 Info about widgets can be found in /admin (table dumping the db)
 Use POST requests to /api/widgets/{widget_id} with data like
+```
 {
     x: int,
     y: int,
@@ -46,10 +47,11 @@ Use POST requests to /api/widgets/{widget_id} with data like
     text: string,
     data: object
 }
-
+```
 Widget specific data:
 
 Gauge
+```
 data: {
     max: Number,
     min: Number,
@@ -59,6 +61,7 @@ data: {
     scale_interval: Number,
     step: Number,
 },
+```
 
 ## TODO
 
