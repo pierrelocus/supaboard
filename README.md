@@ -30,6 +30,36 @@ php artisan serve
 php artisan websockets:serve
 ```
 
+## Usage
+
+The goal is to only use api calls to manage the widgets.
+Info about widgets can be found in /admin (table dumping the db)
+Use POST requests to /api/widgets/{widget_id} with data like
+{
+    x: int,
+    y: int,
+    width: int,
+    height: int,
+    type: string (text|number|gauge|graph|food),
+    auto_position: bool (use false if you give a x/y position, will force later),
+    widget_id: string,
+    text: string,
+    data: object
+}
+
+Widget specific data:
+
+Gauge
+data: {
+    max: Number,
+    min: Number,
+    value: Number,
+    start_angle: Number,
+    end_angle: Number,
+    scale_interval: Number,
+    step: Number,
+},
+
 ## TODO
 
 + refactor migration scripts
