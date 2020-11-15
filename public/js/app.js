@@ -2089,6 +2089,65 @@ function Widget(_ref) {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ClockWidgetComponent.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ClockWidgetComponent.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['id', 'widget_id', 'x', 'y', 'width', 'height', 'auto_position', 'text'],
+  data: function data() {
+    return {
+      time: '',
+      date: ''
+    };
+  },
+  mounted: function mounted() {
+    var timerID = setInterval(this.updateTime, 1000);
+    this.updateTime();
+  },
+  methods: {
+    updateTime: function updateTime() {
+      var week = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
+      var cd = new Date();
+      this.time = this.zeroPadding(cd.getHours(), 2) + ':' + this.zeroPadding(cd.getMinutes(), 2) + ':' + this.zeroPadding(cd.getSeconds(), 2);
+      this.date = this.zeroPadding(cd.getFullYear(), 4) + '-' + this.zeroPadding(cd.getMonth() + 1, 2) + '-' + this.zeroPadding(cd.getDate(), 2) + ' ' + week[cd.getDay()];
+    },
+    zeroPadding: function zeroPadding(num, digit) {
+      var zero = '';
+
+      for (var i = 0; i < digit; i++) {
+        zero += '0';
+      }
+
+      return (zero + num).slice(-digit);
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/FoodWidgetComponent.vue?vue&type=script&lang=js&":
 /*!******************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/FoodWidgetComponent.vue?vue&type=script&lang=js& ***!
@@ -2098,6 +2157,14 @@ function Widget(_ref) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 //
 //
 //
@@ -2127,18 +2194,47 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     pictureBeat: function pictureBeat() {
-      setInterval(function () {
-        this.setPicture();
-      }.bind(this), 1000 * 60 * 60);
-    },
-    setPicture: function setPicture() {
       var _this = this;
 
-      window.axios.get('https://foodish-api.herokuapp.com/api').then(function (response) {
-        if (response.data.image) {
-          _this.url = response.data.image;
-        }
-      });
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                setInterval(function () {
+                  this.setPicture();
+                }.bind(_this), 1000 * 60 * 10);
+
+              case 1:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }))();
+    },
+    setPicture: function setPicture() {
+      var _this2 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.next = 2;
+                return window.axios.get('https://foodish-api.herokuapp.com/api').then(function (response) {
+                  if (response.data.image) {
+                    _this2.url = response.data.image;
+                  }
+                });
+
+              case 2:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }))();
     }
   },
   updated: function updated() {}
@@ -2238,36 +2334,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['id', 'widget_id', 'x', 'y', 'width', 'height', 'auto_position', 'text', 'data'],
+  props: {
+    id: Number,
+    widget_id: String,
+    x: Number,
+    y: Number,
+    width: Number,
+    height: Number,
+    auto_position: Boolean | Number,
+    text: String,
+    data: {
+      labels: Array,
+      datasets: Array
+    }
+  },
   components: {
     LineChart: _LineChart_js__WEBPACK_IMPORTED_MODULE_0__["default"]
-  },
-  data: function data() {
-    return {
-      datacollection: {}
-    };
-  },
-  mounted: function mounted() {
-    this.fillData();
-  },
-  methods: {
-    fillData: function fillData() {
-      this.datacollection = {
-        labels: [this.getRandomInt(), this.getRandomInt()],
-        datasets: [{
-          label: 'Data 1',
-          borderColor: 'blue',
-          data: [this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt()]
-        }, {
-          label: 'Data 2',
-          borderColor: 'green',
-          data: [this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt()]
-        }]
-      };
-    },
-    getRandomInt: function getRandomInt() {
-      return Math.floor(Math.random() * (50 - 5 + 1)) + 5;
-    }
   }
 });
 
@@ -86475,6 +86557,56 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ClockWidgetComponent.vue?vue&type=template&id=68269096&":
+/*!***********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ClockWidgetComponent.vue?vue&type=template&id=68269096& ***!
+  \***********************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass: "grid-stack-item",
+      attrs: {
+        id: _vm.widget_id,
+        "data-gs-x": _vm.x,
+        "data-gs-y": _vm.y,
+        "data-gs-width": _vm.width,
+        "data-gs-height": _vm.height,
+        "data-gs-auto-position": _vm.auto_position
+      }
+    },
+    [
+      _c("div", { staticClass: "grid-stack-item-content clock" }, [
+        _c("div", { attrs: { id: "clock" } }, [
+          _c("p", { staticClass: "date" }, [_vm._v(_vm._s(_vm.date))]),
+          _vm._v(" "),
+          _c("p", { staticClass: "time" }, [_vm._v(_vm._s(_vm.time))])
+        ]),
+        _vm._v(" "),
+        _c("span", { staticClass: "widget_id_bottom" }, [
+          _vm._v("ID : " + _vm._s(_vm.widget_id))
+        ])
+      ])
+    ]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/FoodWidgetComponent.vue?vue&type=template&id=55df4b40&":
 /*!**********************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/FoodWidgetComponent.vue?vue&type=template&id=55df4b40& ***!
@@ -86629,7 +86761,7 @@ var render = function() {
         [
           _c("line-chart", {
             staticClass: "chart_item",
-            attrs: { "chart-data": _vm.datacollection }
+            attrs: { "chart-data": _vm.data }
           }),
           _vm._v(" "),
           _c("span", { staticClass: "widget_id_bottom" }, [
@@ -102612,6 +102744,7 @@ module.exports = function(module) {
 
 var map = {
 	"./App.vue": "./resources/js/App.vue",
+	"./components/ClockWidgetComponent.vue": "./resources/js/components/ClockWidgetComponent.vue",
 	"./components/FoodWidgetComponent.vue": "./resources/js/components/FoodWidgetComponent.vue",
 	"./components/GaugeWidgetComponent.vue": "./resources/js/components/GaugeWidgetComponent.vue",
 	"./components/GraphWidgetComponent.vue": "./resources/js/components/GraphWidgetComponent.vue",
@@ -102798,6 +102931,75 @@ window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
   forceTLS: false,
   disableStats: true
 });
+
+/***/ }),
+
+/***/ "./resources/js/components/ClockWidgetComponent.vue":
+/*!**********************************************************!*\
+  !*** ./resources/js/components/ClockWidgetComponent.vue ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ClockWidgetComponent_vue_vue_type_template_id_68269096___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ClockWidgetComponent.vue?vue&type=template&id=68269096& */ "./resources/js/components/ClockWidgetComponent.vue?vue&type=template&id=68269096&");
+/* harmony import */ var _ClockWidgetComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ClockWidgetComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/ClockWidgetComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _ClockWidgetComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ClockWidgetComponent_vue_vue_type_template_id_68269096___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ClockWidgetComponent_vue_vue_type_template_id_68269096___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/ClockWidgetComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/ClockWidgetComponent.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************!*\
+  !*** ./resources/js/components/ClockWidgetComponent.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ClockWidgetComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./ClockWidgetComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ClockWidgetComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ClockWidgetComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/ClockWidgetComponent.vue?vue&type=template&id=68269096&":
+/*!*****************************************************************************************!*\
+  !*** ./resources/js/components/ClockWidgetComponent.vue?vue&type=template&id=68269096& ***!
+  \*****************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ClockWidgetComponent_vue_vue_type_template_id_68269096___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./ClockWidgetComponent.vue?vue&type=template&id=68269096& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ClockWidgetComponent.vue?vue&type=template&id=68269096&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ClockWidgetComponent_vue_vue_type_template_id_68269096___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ClockWidgetComponent_vue_vue_type_template_id_68269096___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
 
 /***/ }),
 

@@ -23,7 +23,13 @@ class WidgetChange implements ShouldBroadcast
      */
     public function __construct()
     {
-        $this->widgets = WidgetAction::all();
+        $data = [];
+        $widgets = WidgetAction::all() ?? [];
+        foreach ($widgets as $k => $widget) {
+            $data[$k] = $widget;
+            $data[$k]['data'] = json_decode($data[$k]['data'], true);
+        }
+        $this->widgets = $data;
     }
 
     /**

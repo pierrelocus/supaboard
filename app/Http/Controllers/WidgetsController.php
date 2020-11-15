@@ -81,6 +81,13 @@ class WidgetsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            $widget = WidgetAction::where('widget_id', '=', $id)->first();
+            WidgetAction::destroy($widget->id);
+        } catch (\Exception $e) {
+            return response($e->getMessage(), Response::HTTP_NOT_FOUND);
+        }
+        event(new WidgetChange());
+        return response(null, Response::HTTP_OK);
     }
 }

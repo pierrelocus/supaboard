@@ -10912,7 +10912,7 @@ a.text-dark:focus {
 }
 
 .grid-stack-item-content.text {
-  background: #7400B8;
+  background: #065A60;
   display: flex;
 }
 
@@ -10921,17 +10921,17 @@ a.text-dark:focus {
 }
 
 .grid-stack-item-content.gauge {
-  background: #6930C3;
+  background: #272640;
   width: auto;
   height: auto;
 }
 
 .grid-stack-item-content.graph {
-  background: #64DFDF;
+  background: #4d194d;
 }
 
 .grid-stack-item-content.number {
-  background: #0077B6;
+  background: #1b3a4b;
   display: flex;
 }
 
@@ -10965,6 +10965,40 @@ a.text-dark:focus {
   width: 100%;
   margin: 0;
   padding: 0;
+}
+
+.grid-stack-item-content.clock {
+  background: #1b3a4b;
+  background: radial-gradient(ellipse at center, #0a2e38 0%, #000000 70%);
+  background-size: 100%;
+}
+
+.grid-stack-item-content.clock p {
+  margin: 0;
+  padding: 0;
+}
+
+.grid-stack-item-content.clock #clock {
+  font-family: "Share Tech Mono", monospace;
+  color: #ffffff;
+  text-align: center;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: #daf6ff;
+  text-shadow: 0 0 20px #0aafe6, 0 0 20px rgba(10, 175, 230, 0);
+}
+
+.grid-stack-item-content.clock #clock .time {
+  letter-spacing: 0.05em;
+  font-size: 30px;
+  padding: 5px 0;
+}
+
+.grid-stack-item-content.clock #clock .date {
+  letter-spacing: 0.1em;
+  font-size: 22px;
 }
 
 .grid-item-content {

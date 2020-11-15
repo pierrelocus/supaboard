@@ -29,13 +29,13 @@
             this.pictureBeat();
         },
         methods: {
-            pictureBeat() {
+            async pictureBeat() {
                 setInterval(function(){
                     this.setPicture();
-                }.bind(this), 1000 * 60 * 60);
+                }.bind(this), 1000 * 60 * 10);
             },
-            setPicture() {
-                window.axios.get('https://foodish-api.herokuapp.com/api').then(response => {
+            async setPicture() {
+                await window.axios.get('https://foodish-api.herokuapp.com/api').then(response => {
                     if (response.data.image) {
                         this.url = response.data.image;
                     }

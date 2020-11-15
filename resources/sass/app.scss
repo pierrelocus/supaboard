@@ -7,29 +7,28 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
-
 .bg-black{
     background: url('/img/bg.jpg');
 }
 .grid-stack-item-content{
     color: white;
     &.text{
-        background:#7400B8;
+        background: nth($rcolor, random(length($rcolor)));
         display: flex;
     }
     &.text h1{
         margin: auto;
     }
     &.gauge{
-        background:#6930C3;
+        background: nth($rcolor, random(length($rcolor)));
         width: auto;
         height: auto;
     }
     &.graph{
-        background: #64DFDF;
+        background: nth($rcolor, random(length($rcolor)));
     }
     &.number{
-        background: #0077B6;
+        background: nth($rcolor, random(length($rcolor)));
         display: flex;
     }
     &.number h1{
@@ -59,6 +58,37 @@
         margin: 0;
         padding: 0;
     }
+    &.clock {
+        background: nth($rcolor, random(length($rcolor)));
+        background: radial-gradient(ellipse at center,  #0a2e38  0%, #000000 70%);
+        background-size: 100%;
+    
+        & p {
+            margin: 0;
+            padding: 0;
+        }
+        & #clock {
+            font-family: 'Share Tech Mono', monospace;
+            color: #ffffff;
+            text-align: center;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            color: #daf6ff;
+            text-shadow: 0 0 20px rgba(10, 175, 230, 1),  0 0 20px rgba(10, 175, 230, 0);
+            .time {
+                letter-spacing: 0.05em;
+                font-size: 30px;
+                padding: 5px 0;
+            }
+            .date {
+                letter-spacing: 0.1em;
+                font-size: 22px;
+            }
+        }    
+    }
+    
 }
 .grid-item-content{
     overflow: hidden!important;

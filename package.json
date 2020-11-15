@@ -25,6 +25,7 @@
     },
     "dependencies": {
         "@chrisheanan/vue-gauge": "^1.2.1",
+        "@dangvanthanh/vue-clock": "^0.1.7",
         "chart.js": "^2.9.4",
         "gauge": "^3.0.0",
         "gridstack": "^2.2.0",

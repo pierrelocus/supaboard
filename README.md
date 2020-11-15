@@ -34,19 +34,20 @@ php artisan websockets:serve
 
 The goal is to only use api calls to manage the widgets.
 Info about widgets can be found in /admin (table dumping the db)
-Use POST requests to /api/widgets/{widget_id} with data like
-If widget_id doesn't exist, it will create a new widget.
+Use POST requests to /api/widgets/{widget_id} with data as explained behind.
+(If widget_id doesn't exist, it will create a new widget)
+Use DELETE requests to /api/widgets/{widget_id} to delete it.
 
 ```
 {
-    x: int,
-    y: int,
-    width: int,
-    height: int,
-    type: string (text|number|gauge|graph|food),
-    auto_position: bool (use false if you give a x/y position, will force later),
-    text: string,
-    data: object
+    x: Number,
+    y: Number,
+    width: Number,
+    height: Number,
+    type: String (text|number|gauge|graph|food|clock),
+    auto_position: Boolean (use 0 if you give a x/y position, will force later),
+    text: String,
+    data: Object
 }
 ```
 Widget specific data:
@@ -64,13 +65,28 @@ data: {
 },
 ```
 
+Graph
+```
+data: 
+{
+    labels: Array, (labels for X)
+    datasets: Array of Objects
+}
+datasets objects :
+{
+    "label": String,
+    "borderColor": String,
+    "data": Array of int
+}
+```
+
 ## TODO
 
 + refactor migration scripts
-+ manage graph data
-+ create other widgets
++ make widget movable/resizable when created (I don't know why it's not)
 + enhance text/number widget with text to display what they are
-+ find different color palettes and randomize the colors of widgets
++ find different color palettes and randomize the colors of widgets (working on it, not able to do real random in scss)
++ create other widgets
 
 ## Screenshot
 
@@ -83,7 +99,7 @@ The result on my screenshot comes from these data:
 ```sql
 LOCK TABLES `widget_actions` WRITE;
 /*!40000 ALTER TABLE `widget_actions` DISABLE KEYS */;
-INSERT INTO `widget_actions` VALUES (1,'number-one','{}',NULL,'2020-11-14 09:50:07',0,0,2,3,0,'5','number'),(2,'gauge-1','{\"max\": 100, \"value\": 20, \"min\": 0, \"step\": 10, \"start_angle\": -90, \"end_angle\": 90, \"scale_interval\": 15}',NULL,'2020-11-14 12:39:24',2,2,2,3,0,'Gauge','gauge'),(3,'text-1','',NULL,'2020-11-14 10:13:20',4,2,2,3,0,'New text widget !','text'),(5,'graph-1','{\"0\": 0, \"1\": 5, \"2\": 4, \"3\": 8, \"4\": 5}',NULL,'2020-11-14 13:01:48',2,5,2,5,0,'graph','graph'),(6,'gsi-1','{}','2020-11-14 09:03:57','2020-11-14 13:01:50',0,5,2,5,0,'qsdf','text'),(8,'testing-1','{}','2020-11-14 09:10:06','2020-11-14 10:13:11',4,0,2,2,0,'12','number'),(9,'testing-2','{}','2020-11-14 09:11:54','2020-11-14 09:50:11',0,3,2,2,0,'19','number'),(10,'test-3',NULL,'2020-11-14 09:24:24','2020-11-14 12:11:35',2,0,2,2,0,'42','number'),(12,'food-1',NULL,'2020-11-14 10:00:37','2020-11-14 13:01:38',4,5,2,5,0,NULL,'food');
+INSERT INTO `widget_actions` VALUES (12,'food-1',NULL,'2020-11-14 10:00:37','2020-11-15 15:01:27',0,3,2,5,0,NULL,'food'),(13,'clock-1',NULL,'2020-11-14 13:39:10','2020-11-14 18:15:54',0,0,3,3,0,NULL,'clock'),(19,'graph-1','{\"labels\": [1, 2], \"datasets\": [{\"label\": \"data1\", \"borderColor\": \"blue\", \"data\": [1, 4, 6, 7, 3]}, {\"label\": \"data2\", \"borderColor\": \"green\", \"data\": [3, 5, 3, 5, 6]}]}',NULL,'2020-11-15 15:01:30',2,3,2,5,0,'graph','graph'),(20,'text-1',NULL,'2020-11-15 14:49:04','2020-11-15 15:01:25',3,0,3,2,0,'Hello !','text'),(23,'number-1',NULL,'2020-11-15 15:02:50','2020-11-15 15:02:54',4,2,3,2,0,'12','number');
 /*!40000 ALTER TABLE `widget_actions` ENABLE KEYS */;
 UNLOCK TABLES;
 ```
