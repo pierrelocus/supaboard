@@ -52,9 +52,10 @@ Use DELETE requests to /api/widgets/{widget_id} to delete it.
 ```
 Widget specific data:
 
-Gauge
+### Gauge
 ```
-data: {
+data: 
+{
     max: Number,
     min: Number,
     value: Number,
@@ -65,7 +66,7 @@ data: {
 },
 ```
 
-Graph
+### Graph
 ```
 data: 
 {
@@ -77,6 +78,19 @@ datasets objects :
     "label": String,
     "borderColor": String,
     "data": Array of int
+}
+```
+### Calendar
+```
+data:
+{
+    "events": [
+        {
+            "title": String,
+            "start": String (e.g. "2020-01-01 14:00:00"),
+            "end": String (e.g. "2020-01-01 14:30:00")
+        }
+    ]
 }
 ```
 
