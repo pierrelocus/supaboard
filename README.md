@@ -89,7 +89,6 @@ datasets objects :
 + create other widgets
 
 ## Screenshot
-
 ![alt text](https://raw.githubusercontent.com/pierrelocus/supaboard/main/supaboard.png "Screenshot")
 
 ## Data
