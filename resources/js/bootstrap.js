@@ -35,7 +35,7 @@ window.Pusher = require('pusher-js');
 
 window.Echo = new Echo({
     broadcaster: 'pusher',
-    key: 'b7cdec1bc823d7e80869',
+    key: '<your-api-key>',
     wsHost: window.location.hostname,
     wsPort: 6001,
     forceTLS: false,
