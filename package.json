@@ -26,6 +26,10 @@
     "dependencies": {
         "@chrisheanan/vue-gauge": "^1.2.1",
         "@dangvanthanh/vue-clock": "^0.1.7",
+        "@fullcalendar/daygrid": "^5.4.0",
+        "@fullcalendar/interaction": "^5.4.0",
+        "@fullcalendar/timegrid": "^5.4.0",
+        "@fullcalendar/vue": "^5.4.0",
         "chart.js": "^2.9.4",
         "gauge": "^3.0.0",
         "gridstack": "^2.2.0",

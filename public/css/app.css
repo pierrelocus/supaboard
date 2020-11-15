@@ -10912,7 +10912,7 @@ a.text-dark:focus {
 }
 
 .grid-stack-item-content.text {
-  background: #065A60;
+  background: #3e1f47;
   display: flex;
 }
 
@@ -10921,17 +10921,26 @@ a.text-dark:focus {
 }
 
 .grid-stack-item-content.gauge {
-  background: #272640;
+  background: #0b525b;
   width: auto;
   height: auto;
 }
 
 .grid-stack-item-content.graph {
-  background: #4d194d;
+  background: #212f45;
+}
+
+.grid-stack-item-content.calendar {
+  background: white;
+  color: black;
+}
+
+.grid-stack-item-content .fc-theme-standard.fc {
+  height: 100%;
 }
 
 .grid-stack-item-content.number {
-  background: #1b3a4b;
+  background: #065A60;
   display: flex;
 }
 
@@ -10968,7 +10977,7 @@ a.text-dark:focus {
 }
 
 .grid-stack-item-content.clock {
-  background: #1b3a4b;
+  background: #144552;
   background: radial-gradient(ellipse at center, #0a2e38 0%, #000000 70%);
   background-size: 100%;
 }

@@ -27,6 +27,13 @@
     &.graph{
         background: nth($rcolor, random(length($rcolor)));
     }
+    &.calendar{
+        background: white;
+        color: black;
+    }
+    & .fc-theme-standard.fc{
+        height: 100%;
+    }
     &.number{
         background: nth($rcolor, random(length($rcolor)));
         display: flex;

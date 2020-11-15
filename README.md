@@ -44,7 +44,7 @@ Use DELETE requests to /api/widgets/{widget_id} to delete it.
     y: Number,
     width: Number,
     height: Number,
-    type: String (text|number|gauge|graph|food|clock),
+    type: String (text|number|gauge|graph|food|clock|calendar),
     auto_position: Boolean (use 0 if you give a x/y position, will force later),
     text: String,
     data: Object
@@ -89,7 +89,7 @@ datasets objects :
 + create other widgets
 
 ## Screenshot
-![alt text](https://raw.githubusercontent.com/pierrelocus/supaboard/main/supboard.png "Screenshot")
+![alt text](https://raw.githubusercontent.com/pierrelocus/supaboard/main/supa.png "Screenshot")
 
 ## Data
 
@@ -98,7 +98,7 @@ The result on my screenshot comes from these data:
 ```sql
 LOCK TABLES `widget_actions` WRITE;
 /*!40000 ALTER TABLE `widget_actions` DISABLE KEYS */;
-INSERT INTO `widget_actions` VALUES (12,'food-1',NULL,'2020-11-14 10:00:37','2020-11-15 15:01:27',0,3,2,5,0,NULL,'food'),(13,'clock-1',NULL,'2020-11-14 13:39:10','2020-11-14 18:15:54',0,0,3,3,0,NULL,'clock'),(19,'graph-1','{\"labels\": [1, 2], \"datasets\": [{\"label\": \"data1\", \"borderColor\": \"blue\", \"data\": [1, 4, 6, 7, 3]}, {\"label\": \"data2\", \"borderColor\": \"green\", \"data\": [3, 5, 3, 5, 6]}]}',NULL,'2020-11-15 15:01:30',2,3,2,5,0,'graph','graph'),(20,'text-1',NULL,'2020-11-15 14:49:04','2020-11-15 15:01:25',3,0,3,2,0,'Hello !','text'),(23,'number-1',NULL,'2020-11-15 15:02:50','2020-11-15 15:02:54',4,2,3,2,0,'12','number');
+INSERT INTO `widget_actions` VALUES (12,'food-1',NULL,'2020-11-14 10:00:37','2020-11-15 17:12:33',3,5,2,4,0,NULL,'food'),(13,'clock-1',NULL,'2020-11-14 13:39:10','2020-11-14 18:15:54',0,0,3,3,0,NULL,'clock'),(19,'graph-1','{\"labels\": [1, 2], \"datasets\": [{\"label\": \"data1\", \"borderColor\": \"blue\", \"data\": [1, 4, 6, 7, 3]}, {\"label\": \"data2\", \"borderColor\": \"green\", \"data\": [3, 5, 3, 5, 6]}]}',NULL,'2020-11-15 16:27:29',5,0,2,5,0,'graph','graph'),(20,'text-1',NULL,'2020-11-15 14:49:04','2020-11-15 17:08:37',3,2,2,3,0,'Coucou !','text'),(23,'number-1',NULL,'2020-11-15 15:02:50','2020-11-15 16:45:32',3,0,2,2,0,'12','number'),(24,'cal-1','{\"events\": [{\"title\": \"Meeting 1\", \"start\": \"2020-11-16 19:00:00\", \"end\": \"2020-11-16 20:30:00\"}, {\"title\": \"Meeting 2\", \"start\": \"2020-11-16 19:30:00\", \"end\": \"2020-11-16 22:00:00\"}]}','2020-11-15 16:20:14','2020-11-15 17:11:40',0,3,3,6,0,NULL,'calendar');
 /*!40000 ALTER TABLE `widget_actions` ENABLE KEYS */;
 UNLOCK TABLES;
 ```
