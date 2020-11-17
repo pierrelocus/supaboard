@@ -21,6 +21,6 @@
             @yield('content')
         </div>
 
-        @yield('scripts')
+        @stack('sscripts')
     </body>
 </html>

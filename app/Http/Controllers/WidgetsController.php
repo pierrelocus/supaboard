@@ -4,11 +4,23 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use App\Models\WidgetAction;
-use App\Events\WidgetChange;
+use App\Services\WidgetsService;
 
 class WidgetsController extends Controller
 {
+    /**
+     * @var WidgetsService $widgetsService
+     */
+    protected $widgetsService;
+
+    /**
+     * WidgetsController constructor
+     */
+    public function __construct(WidgetsService $widgetsService)
+    {
+        $this->widgetsService = $widgetsService;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -16,61 +28,51 @@ class WidgetsController extends Controller
      */
     public function index()
     {
-        $data = [];
-        $widgets = WidgetAction::all() ?? [];
-        foreach ($widgets as $k => $widget) {
-            $data[$k] = $widget;
-            $data[$k]['data'] = json_decode($data[$k]['data'], true);
-        }
-        return response(json_encode($data), Response::HTTP_OK);
-    }
+        $result = ['status' => 200];
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+        try {
+            $result['data'] = $this->widgetsService->getAll();
+        } catch (Exception $e) {
+            $result = [
+                'status' => 500,
+                'error' => $e->getMessage(),
+            ];
+        }
+        return response()->json($result, $result['status']);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  int  $widgetId
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $widgetId)
     {
-        $widget = WidgetAction::where('widget_id', '=', $id)->first();
-        if (!$widget) {
-            $widget = new WidgetAction();
+        $data = $request->only([
+            'type',
+            'x',
+            'y',
+            'width',
+            'height',
+            'data',
+            'auto_position',
+            'text'
+        ]);
+
+        $result = ['status' => 200];
+
+        try {
+            $result['data'] = $this->widgetsService->updateOrCreateWidget($data, $widgetId);
+        } catch (Exception $e) {
+            $result = [
+                'status' => 500,
+                'error' => $e->getMessage(),
+            ];
         }
-        $data = $request->all();
-        if (isset($data['from_vue'])) {
-            $widget->x = $data['gsX'];
-            $widget->y = $data['gsY'];
-            $widget->width = $data['gsWidth'];
-            $widget->height = $data['gsHeight'];
-            $widget->auto_position = $data['auto_position'];
-        }
-        else {
-            try {
-                foreach ($data as $k => $v) {
-                    $widget->$k = $v;
-                }
-            } catch (\Exception $e) {
-                error_log($e->getMessage());
-                return response($e->getMessage(), Response::HTTP_NOT_FOUND);
-            }
-        }
-        $widget->widget_id = $id;
-        $widget->save();
-        event(new WidgetChange());
-        return response(null, Response::HTTP_OK);
+
+        return response()->json($result, $result['status']);
     }
 
     /**
@@ -79,15 +81,19 @@ class WidgetsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id)
     {
+        $result = ['status' => 200];
+
         try {
-            $widget = WidgetAction::where('widget_id', '=', $id)->first();
-            WidgetAction::destroy($widget->id);
-        } catch (\Exception $e) {
-            return response($e->getMessage(), Response::HTTP_NOT_FOUND);
+            $result['data'] = $this->widgetsService->deleteByWidgetId($id);
+        } catch (Exception $e) {
+            $result = [
+                'status' => 500,
+                'error' => $e->getMessage(),
+            ];
         }
-        event(new WidgetChange());
-        return response(null, Response::HTTP_OK);
+
+        return response()->json($result, $result['status']);
     }
 }

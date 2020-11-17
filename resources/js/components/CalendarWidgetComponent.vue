@@ -14,17 +14,17 @@
     </div>
 </template>
 <script>
-import FullCalendar from '@fullcalendar/vue'
-import timeGridPlugin from '@fullcalendar/timegrid'
-import interactionPlugin from '@fullcalendar/interaction'
+    import FullCalendar from '@fullcalendar/vue'
+    import timeGridPlugin from '@fullcalendar/timegrid'
+    import interactionPlugin from '@fullcalendar/interaction'
 
-function Event({title, start, end}) {
-    this.title = title;
-    this.start = start;
-    this.end = end;
-}
-export default {
-    props:{ 
+    function Event({title, start, end}) {
+        this.title = title;
+        this.start = start;
+        this.end = end;
+    }
+    export default {
+        props:{ 
             id: Number,
             widget_id: String,
             x: Number,
@@ -35,38 +35,38 @@ export default {
             text: String,
             data: Object,
         },
-    components: {
-        FullCalendar,
-    },
-    data() {
-        return {
-            calendarOptions: {
-                plugins: [ timeGridPlugin, interactionPlugin ],
-                initialView: 'timeGridDay',
-                editable: true,
-                hiddenDays: [0, 6],
-                slotDuration: '00:30:00',
-                scrollTime: new Date().getHours()+':00:00',
-                events: [],
-                allDaySlot: false,
+        components: {
+            FullCalendar,
+        },
+        data() {
+            return {
+                calendarOptions: {
+                    plugins: [ timeGridPlugin, interactionPlugin ],
+                    initialView: 'timeGridDay',
+                    editable: true,
+                    hiddenDays: [0, 6],
+                    slotDuration: '00:30:00',
+                    scrollTime: new Date().getHours()+':00:00',
+                    events: [],
+                    allDaySlot: false,
+                }
             }
-        }
-    },
-    mounted() {
-        this.checkEvents();
-    },
-    updated() {
-        this.checkEvents();
-    },
-    methods: {
-        checkEvents() {
-            if (this.$props.data.events) {
-                this.calendarOptions.events = [];
-                this.$props.data.events.forEach(event => {
-                    this.calendarOptions.events.push(new Event(event));
-                });
+        },
+        mounted() {
+            this.checkEvents();
+        },
+        updated() {
+            this.checkEvents();
+        },
+        methods: {
+            checkEvents() {
+                if (this.$props.data.events) {
+                    this.calendarOptions.events = [];
+                    this.$props.data.events.forEach(event => {
+                        this.calendarOptions.events.push(new Event(event));
+                    });
+                }
             }
-        }
-    },
-}
+        },
+    }
 </script>

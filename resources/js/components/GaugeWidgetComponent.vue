@@ -23,7 +23,6 @@
         </div>
     </div>
 </template>
-f
 <script>
     import { VueSvgGauge } from 'vue-svg-gauge'
     
@@ -46,12 +45,6 @@ f
                 scale_interval: Number,
                 step: Number,
             },
-        },
-        mounted() {
-        },
-        updated() {
-        },
-        methods: {
         },
     }
 </script>

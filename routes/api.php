@@ -20,6 +20,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('widgets', [WidgetsController::class, 'index']);
-Route::post('widgets', [WidgetsController::class, 'store']);
-Route::post('widgets/{id}', [WidgetsController::class, 'update']);
-Route::delete('widgets/{id}', [WidgetsController::class, 'destroy']);
+Route::post('widgets/{widgetId}', [WidgetsController::class, 'update']);
+Route::delete('widgets/{id}', [WidgetsController::class, 'delete']);

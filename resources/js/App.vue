@@ -18,7 +18,6 @@
     import { GridStack } from 'gridstack';
     import 'gridstack/dist/gridstack.css';
 
-
     function Widget({id, widget_id, x, y, width, height, auto_position, text, type, data}) {
         this.id = id;
         this.widget_id = widget_id;
@@ -52,8 +51,8 @@
         methods: {
             async loadWidgets() {
                 await window.axios.get('/api/widgets').then(response => {
-                    if (response.data) {
-                        response.data.forEach(widget => {
+                    if (response.data.data) {
+                        response.data.data.forEach(widget => {
                             this.widgets.push(new Widget(widget));
                         });
                     }
@@ -70,13 +69,13 @@
             bindGridEvents() {
                 this.grid.on('change', function(i, elems){
                     elems.forEach(function(elem){
-                        let post = ['gsX', 'gsY', 'gsWidth', 'gsHeight'];
-                        let data = {};
-                        for (let p in post) {
-                            data[post[p]] = elem.el.dataset[post[p]];
-                        }
-                        data['auto_position'] = 0;
-                        data['from_vue'] = true;
+                        let data = {
+                            'x': elem.el.dataset['gsX'],
+                            'y': elem.el.dataset['gsY'],
+                            'width': elem.el.dataset['gsWidth'],
+                            'height': elem.el.dataset['gsHeight'],
+                            'auto_position': 0,
+                        };
                         window.axios.post(`/api/widgets/${elem.el.id}`, data);
                     });
                 });

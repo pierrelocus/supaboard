@@ -13,12 +13,18 @@
         </div>
     </div>
 </template>
-
 <script>
     export default {
-        props: [
-            'id', 'widget_id', 'x', 'y', 'width', 'height', 'auto_position', 'text'
-        ],
+        props: {
+            id: Number, 
+            widget_id: String, 
+            x: Number, 
+            y: Number, 
+            width: Number, 
+            height: Number, 
+            auto_position: Number, 
+            text: String
+        },
         data() {
             return {
                 url: ''
@@ -42,7 +48,5 @@
                 });
             }
         },
-        updated() {
-        }
     }
 </script>

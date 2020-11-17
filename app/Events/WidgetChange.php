@@ -9,7 +9,6 @@ use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
-use App\Models\WidgetAction;
 
 class WidgetChange implements ShouldBroadcast
 {
@@ -21,15 +20,9 @@ class WidgetChange implements ShouldBroadcast
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(array $widgets)
     {
-        $data = [];
-        $widgets = WidgetAction::all() ?? [];
-        foreach ($widgets as $k => $widget) {
-            $data[$k] = $widget;
-            $data[$k]['data'] = json_decode($data[$k]['data'], true);
-        }
-        $this->widgets = $data;
+        $this->widgets = $widgets;
     }
 
     /**

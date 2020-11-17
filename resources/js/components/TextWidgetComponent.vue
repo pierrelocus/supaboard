@@ -15,12 +15,15 @@
 
 <script>
     export default {
-        props: [
-            'id', 'widget_id', 'x', 'y', 'width', 'height', 'auto_position', 'text'
-        ],
-        mounted() {
+        props: {
+            id: Number, 
+            widget_id: String, 
+            x: Number, 
+            y: Number, 
+            width: Number, 
+            height: Number, 
+            auto_position: Number, 
+            text: String
         },
-        updated() {
-        }
     }
 </script>

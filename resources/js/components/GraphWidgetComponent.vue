@@ -12,7 +12,6 @@
         </div>
     </div>
 </template>
-
 <script>
     import LineChart from './LineChart.js'
 
