@@ -94,7 +94,7 @@ class WidgetsService
             if ($validator->fails()) {
                 throw new InvalidArgumentException($validator->errors()->first());
             }
-            $result = $this->widgetsRepository->save($data);
+            $result = $this->widgetsRepository->save($data, $widgetId);
         } else {
             $validator = Validator::make($data, [
                 'type' => 'nullable|string',

@@ -61,15 +61,18 @@ class WidgetsRepository
      * Create one with given data
      * 
      * @param array $data
+     * @param String $widgetId
      * @return WidgetAction $widget
      */
-    public function save($data)
+    public function save($data, $widgetId)
     {
         $widget = new $this->widget;
 
         foreach ($data as $k => $v) {
             $widget->$k = $v;
         }
+
+        $widget->widget_id = $widgetId;
 
         $widget->save();
 

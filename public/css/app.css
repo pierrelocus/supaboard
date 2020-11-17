@@ -10912,7 +10912,7 @@ a.text-dark:focus {
 }
 
 .grid-stack-item-content.text {
-  background: #065A60;
+  background: #144552;
   display: flex;
 }
 
@@ -10921,13 +10921,13 @@ a.text-dark:focus {
 }
 
 .grid-stack-item-content.gauge {
-  background: #006466;
+  background: #272640;
   width: auto;
   height: auto;
 }
 
 .grid-stack-item-content.graph {
-  background: #1b3a4b;
+  background: #4d194d;
 }
 
 .grid-stack-item-content.calendar {
@@ -10940,7 +10940,7 @@ a.text-dark:focus {
 }
 
 .grid-stack-item-content.number {
-  background: #272640;
+  background: #0b525b;
   display: flex;
 }
 
@@ -10977,7 +10977,7 @@ a.text-dark:focus {
 }
 
 .grid-stack-item-content.clock {
-  background: #4d194d;
+  background: #0b525b;
   background: radial-gradient(ellipse at center, #0a2e38 0%, #000000 70%);
   background-size: 100%;
 }
